@@ -1,0 +1,1 @@
+"""A directory containing the integration tests for the yoke package."""
