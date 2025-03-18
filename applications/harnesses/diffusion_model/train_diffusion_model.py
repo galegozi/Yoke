@@ -133,7 +133,7 @@ class UNet(nn.Module):
             nn.ReLU(inplace=True)
         )
 
-    def forward(self, x):
+    def forward(self, x, in_vars, out_vars, Dt):
         enc1 = self.encoder1(x)
         enc1 = self.attention1(enc1)
         enc2 = self.encoder2(nn.functional.max_pool2d(enc1, kernel_size=2))
