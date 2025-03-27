@@ -87,7 +87,11 @@ optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr)
 loss_fn = nn.MSELoss()
 
 # Training loop
-#TODO: load checkpoint if continuing and make compatible with slurm.
+# Load checkpoint if continuing
+if CONTINUATION and checkpoint:
+    model.load_state_dict(torch.load(checkpoint))
+    print(f"Resuming training from checkpoint: {checkpoint}")
+
 os.makedirs(args.checkpoint_dir, exist_ok=True)
 for epoch in range(1, args.epochs+1):
     model.train()

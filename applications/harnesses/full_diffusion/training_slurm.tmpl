@@ -60,3 +60,11 @@ echo "===================TIME STARTED==================="
 echo $date00
 echo "===================TIME FINISHED==================="
 echo $date01
+
+# Check if job needs to be continued
+if [ -f "continue_training" ]; then
+    # Update the input file for continuation
+    sed -i 's/--continuation/--continuation --checkpoint <CHECKPOINT_PATH>/g' <INPUTFILE>
+    # Resubmit the job
+    sbatch <training_slurm_filepath>
+fi
