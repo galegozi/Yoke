@@ -503,3 +503,219 @@ if __name__ == "__main__":
     print(
         "LodeRunner-giant parameters:", count_torch_params(lode_runner, trainable=True)
     )
+
+class DiffusionForecaster(nn.Module):
+    """Diffusion-based video forecasting model. 
+    Takes an initial frame and predicts a sequence of future frames via a 3D U-Net diffusion model.
+    """
+    def __init__(self, default_vars: list[str], image_size: tuple[int, int],
+                 seq_length: int, embed_dim: int = 128, ch_mults: tuple = (1, 2, 4, 8),
+                 time_channels: int = 128):
+        super().__init__()
+        self.default_vars = default_vars
+        self.max_vars = len(default_vars)
+        self.image_size = image_size  # (H, W)
+        self.seq_length = seq_length  # total number of frames (including initial)
+        self.embed_dim = embed_dim
+
+        # Variable embeddings (one learnable vector per variable channel)
+        self.var_embed = nn.Parameter(torch.randn(self.max_vars, embed_dim))
+
+        # Diffusion timestep embedding (learnable MLP to map scalar t -> embed vector)
+        self.time_embed = nn.Sequential(
+            nn.Linear(1, time_channels),
+            nn.SiLU(), 
+            nn.Linear(time_channels, embed_dim),
+            nn.SiLU(),
+            nn.Linear(embed_dim, embed_dim)
+        )
+
+        # 3D U-Net architecture components:
+        # Down-sampling layers
+        self.down_convs = nn.ModuleList()
+        self.downs = nn.ModuleList()  # for pooling/downsampling
+        in_ch = embed_dim
+        levels = len(ch_mults)
+        for i, m in enumerate(ch_mults):
+            out_ch = embed_dim * m
+            # First level: project input channels to embed_dim
+            if i == 0:
+                conv = nn.Sequential(
+                    nn.Conv3d(in_channels=embed_dim, out_channels=out_ch, kernel_size=3, padding=1),
+                    nn.BatchNorm3d(out_ch), nn.SiLU(),  # activation
+                    nn.Conv3d(out_ch, out_ch, kernel_size=3, padding=1),
+                    nn.BatchNorm3d(out_ch), nn.SiLU()
+                )
+            else:
+                conv = nn.Sequential(
+                    nn.Conv3d(in_ch, out_ch, kernel_size=3, padding=1),
+                    nn.BatchNorm3d(out_ch), nn.SiLU(),
+                    nn.Conv3d(out_ch, out_ch, kernel_size=3, padding=1),
+                    nn.BatchNorm3d(out_ch), nn.SiLU()
+                )
+            self.down_convs.append(conv)
+            if i < levels - 1:
+                self.downs.append(nn.Conv3d(out_ch, out_ch, kernel_size=2, stride=2))
+            in_ch = out_ch
+
+        # Bottleneck (bottom of U-Net)
+        self.bottleneck = nn.Sequential(
+            nn.Conv3d(in_ch, in_ch, kernel_size=3, padding=1),
+            nn.BatchNorm3d(in_ch), nn.SiLU(),
+            nn.Conv3d(in_ch, in_ch, kernel_size=3, padding=1),
+            nn.BatchNorm3d(in_ch), nn.SiLU()
+        )
+
+        # Up-sampling layers
+        self.up_convs = nn.ModuleList()
+        self.ups = nn.ModuleList()
+        # Reverse channel multipliers for upsampling
+        for i, m in enumerate(reversed(ch_mults)):
+            out_ch = embed_dim * m
+            if i == 0:
+                # first up conv (start from bottleneck output)
+                conv = nn.Sequential(
+                    nn.Conv3d(in_ch, out_ch, kernel_size=3, padding=1),
+                    nn.BatchNorm3d(out_ch), nn.SiLU(),
+                    nn.Conv3d(out_ch, out_ch, kernel_size=3, padding=1),
+                    nn.BatchNorm3d(out_ch), nn.SiLU()
+                )
+            else:
+                # include skip connection channels (double of out_ch from skip concat)
+                conv = nn.Sequential(
+                    nn.Conv3d(in_ch + out_ch, out_ch, kernel_size=3, padding=1),
+                    nn.BatchNorm3d(out_ch), nn.SiLU(),
+                    nn.Conv3d(out_ch, out_ch, kernel_size=3, padding=1),
+                    nn.BatchNorm3d(out_ch), nn.SiLU()
+                )
+            self.up_convs.append(conv)
+            if i < levels - 1:
+                # Upsampling (transpose conv to double spatial dimensions; time dim also doubled if applicable)
+                self.ups.append(nn.ConvTranspose3d(out_ch, out_ch // 2, kernel_size=2, stride=2))
+                in_ch = out_ch // 2  # after upsampling, channel count will be out_ch//2 for next layer
+            else:
+                self.ups.append(None)  # no up step after final
+            # Update in_ch for next iteration (accounting for skip connections)
+            in_ch = out_ch
+
+        # Final output layer: project to original number of channels
+        self.final_conv = nn.Conv3d(embed_dim, self.max_vars, kernel_size=1)
+
+    def forward(self, x: torch.Tensor, in_vars: torch.Tensor, out_vars: torch.Tensor, diff_step: torch.Tensor) -> torch.Tensor:
+        """
+        Forward pass of the diffusion model.
+        Args:
+            x (Tensor): Noisy video [B, C_in, T, H, W] including initial frame.
+            in_vars (Tensor): indices of input variables present in x.
+            out_vars (Tensor): indices of variables to predict.
+            diff_step (Tensor): diffusion step (between 0 and 1 or actual timestep index) for conditioning.
+        Returns:
+            Tensor: Predicted noise for each output variable [B, C_out, T, H, W].
+        """
+        B, C, T, H, W = x.shape
+        # Ensure input has expected channels:
+        # If in_vars is specified (tensor of indices), select those channels from x
+        if in_vars is not None:
+            # rearrange input channels according to default_vars order if needed
+            x = x[:, in_vars, ...]  # shape [B, len(in_vars), T, H, W]
+        # Embed each variable channel separately and aggregate
+        # Start by expanding each input variable channel to the model's embed_dim
+        # We create an initial feature map of shape [B, embed_dim, T, H, W]
+        # by summing contributions from each variable channel
+        device = x.device
+        feat = torch.zeros((B, self.embed_dim, T, H, W), device=device)
+        for i, var_idx in enumerate(in_vars if in_vars is not None else range(C)):
+            var_id = var_idx.item() if isinstance(var_idx, torch.Tensor) else var_idx
+            # Get the single-channel input for this variable
+            var_map = x[:, i, ...]  # [B, T, H, W]
+            var_map = var_map.unsqueeze(1)  # [B, 1, T, H, W]
+            # Project to embed_dim via a 1x1 convolution (one filter per var) or simple expansion
+            # For simplicity, scale the variable map by a learned weight vector and add bias from var_embed.
+            weight = self.var_embed[var_id].view(1, self.embed_dim, 1, 1, 1)  # [1, embed_dim, 1, 1, 1]
+            # Here we treat weight as per-variable embedding that will multiply the channel's values.
+            var_feat = weight * var_map  # broadcast to [B, embed_dim, T, H, W]
+            feat += var_feat
+        # Now `feat` is a combined feature map of shape [B, embed_dim, T, H, W] aggregating all variables.
+        # Add diffusion timestep embedding as a bias (conditioning on noise level)
+        t_cond = self.time_embed(diff_step.view(-1, 1))  # [B, embed_dim]
+        t_cond = t_cond.view(B, self.embed_dim, 1, 1, 1)  # reshape for broadcasting
+        feat = feat + t_cond  # add time conditioning to all features&#8203;:contentReference[oaicite:5]{index=5}
+
+        # U-Net downsampling pass
+        skip_feats = []
+        h = feat  # current feature map
+        for conv, down in zip(self.down_convs, self.downs):
+            h = conv(h)          # apply convolutional block
+            skip_feats.append(h)  # save for skip connection
+            h = down(h)          # downsample (halve T, H, W if stride 2)
+        # Last conv without subsequent downsampling (bottom layer)
+        h = self.down_convs[-1](h)
+        skip_feats.append(h)
+
+        # Bottleneck
+        h = self.bottleneck(h)
+
+        # U-Net upsampling pass
+        for i, (conv, up) in enumerate(zip(self.up_convs, self.ups)):
+            # Combine with skip connection from corresponding level
+            # (skip_feats were appended in order; last element is bottom)
+            skip_index = len(skip_feats) - 1 - i
+            if skip_index >= 0:
+                # Concatenate skip features from corresponding down layer (if shapes align)
+                h_skip = skip_feats[skip_index]
+                # If spatial/temporal dims differ due to pooling rounding, adjust by cropping or interpolation (omitted for brevity)
+                # Concatenate on channels
+                h = torch.cat([h, h_skip], dim=1)
+            # Upsample (if not the final layer)
+            if up is not None:
+                h = up(h)  # ConvTranspose to increase spatial (and temporal) resolution
+            # Apply up convolution block
+            h = conv(h)
+        # Final 1x1 convolution to map to output variable channels
+        pred_noise = self.final_conv(h)  # [B, max_vars, T, H, W]
+        # Select only the requested output variable channels
+        if out_vars is not None:
+            pred_noise = pred_noise[:, out_vars, ...]
+        return pred_noise
+
+# (Optional) Lightning module for training convenience
+class Lightning_DiffusionForecaster(LightningModule):
+    def __init__(self, model: DiffusionForecaster, in_vars: torch.Tensor, out_vars: torch.Tensor, lr: float = 1e-3):
+        super().__init__()
+        self.model = model
+        self.in_vars = in_vars
+        self.out_vars = out_vars
+        self.lr = lr
+        # Use MSE loss for predicting noise
+        self.loss_fn = nn.MSELoss()
+    def forward(self, x, diff_step):
+        # Forward pass through the model with stored in/out variable indices
+        return self.model(x, self.in_vars, self.out_vars, diff_step)
+    def training_step(self, batch, batch_idx):
+        # batch is expected to be (sequence_tensor,)
+        # sequence_tensor shape: [B, C, T, H, W] with T frames (first is initial, rest future)
+        seq = batch[0]
+        B, C, T, H, W = seq.shape
+        # Sample a random diffusion timestep for each batch (scalar or one per sample)
+        t = torch.randint(0, 1000, (B,), device=self.device) / 1000.0  # normalized [0,1] if 1000 steps
+        # Alternatively, use a fixed beta schedule to get alpha_t, but here we just use t as normalized time.
+        # Add noise to future frames (frames 1..T-1), keep initial frame as is
+        # Create noise tensor
+        noise = torch.randn_like(seq)
+        # Ensure initial frame not noised:
+        noise[:, :, 0, ...] = 0.0
+        # Define a simple linear schedule for noise magnitude (for illustration)
+        # weight_t = sqrt(alpha_t) for data, sqrt(1-alpha_t) for noise. For simplicity assume diff_step = t itself as noise weight.
+        noisy_seq = seq.clone()
+        noisy_seq[:, :, 0, ...] = seq[:, :, 0, ...]  # initial remains the same
+        # noise addition for future frames
+        noisy_seq[:, :, 1:, ...] = (1 - t.view(-1, 1, 1, 1, 1)) * seq[:, :, 1:, ...] + t.view(-1, 1, 1, 1, 1) * noise[:, :, 1:, ...]
+        # Model prediction
+        pred_noise = self.model(noisy_seq, self.in_vars, self.out_vars, t)
+        # Ground truth noise is the actual noise added
+        target_noise = noise[:, self.out_vars, ...]  # same shape as pred_noise
+        loss = self.loss_fn(pred_noise, target_noise)
+        self.log("train_loss", loss)
+        return loss
+    def configure_optimizers(self):
+        return torch.optim.Adam(self.parameters(), lr=self.lr)
