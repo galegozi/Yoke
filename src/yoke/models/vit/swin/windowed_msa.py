@@ -1,8 +1,16 @@
 """Windowed Multi-headed Self-Attention layers module.
 
-This module defines the *Windowed Multi-Headed Self-Attention* and the *Shifted
-Windowed Multi-Headed Self-Attention* classes. These are used directly to
-construct the SWIN encoder block.
+This module defines:
+    - WindowMSA
+    - ShiftedWindowMSA
+    - WindowCosMSA
+    - ShiftedWindowCosMSA
+
+A modification has been made to optionally include an *attention sink*:
+a learnable per-head, per-key-position bias added to the attention logits
+(before softmax) inside each window. This allows the model to learn a
+persistent prior over window key positions (akin to adding a trainable
+parameter to softmax logits as seen in some GPT-style OSS implementations).
 
 """
 
@@ -15,24 +23,38 @@ import numpy as np
 from yoke.models.vit.embedding_encoders import RelativePositionEmbed
 
 
+def _build_attn_sink(
+    num_heads: int, window_size: (int, int), device: torch.device | None = None
+) -> nn.Parameter:
+    """Utility to build the attention sink parameter.
+
+    Shape: (1, num_heads, 1, 1, 1, wh*ww)
+        Broadcast over (B, Hw, Ww, query_positions); unique per head & key position.
+    """
+    wh, ww = window_size
+    return nn.Parameter(
+        torch.zeros(1, num_heads, 1, 1, 1, wh * ww, device=device),
+        requires_grad=True
+    )
+
+
 class WindowMSA(nn.Module):
     """Original Windowed-MSA.
 
-    This module is designed to apply multi-headed self-attention within
-    non-overlapping windows of tokens.
+    Applies multi-headed self-attention within non-overlapping windows.
 
-    Embedding size is the input dimension of the tokens. The embedding size
-    must be evenly divisible by the number of heads. Moreover, the number of
-    tokens, L, must satisfy L=patch_grid_size[0]*patch_grid_size[1]. The
-    respective `window_size` dimensions must divide the `patch_grid_size`
-    dimensions evenly.
+    Attention Sink (optional):
+        If use_attention_sink=True, a learnable bias (attn_sink) of shape
+        (1, num_heads, 1, 1, 1, wh*ww) is added to the attention logits
+        after relative position embedding but before softmax. This provides a
+        per-head, per-key positional prior inside each window.
 
     Args:
-        emb_size (int): Incoming embedding dimension.
-        num_heads (int): Number of heads to use in the MSA.
-        patch_grid_size (int, int): Grid dimensions making up the token list.
-        window_size (int, int): Dimensions of window to use on the patch grid.
-
+        emb_size (int): Token embedding dimension.
+        num_heads (int): Number of attention heads.
+        patch_grid_size (int, int): (H, W) of token grid.
+        window_size (int, int): (wh, ww) window size dividing the grid evenly.
+        use_attention_sink (bool): Enable learnable attention sink bias.
     """
 
     def __init__(
@@ -41,6 +63,7 @@ class WindowMSA(nn.Module):
         num_heads: int = 10,
         patch_grid_size: (int, int) = (16, 32),
         window_size: (int, int) = (8, 4),
+        use_attention_sink: bool = True,
     ) -> None:
         """Initialization method."""
         super().__init__()
@@ -83,6 +106,7 @@ class WindowMSA(nn.Module):
         self.num_heads = num_heads
         self.patch_grid_size = patch_grid_size
         self.window_size = window_size
+        self.use_attention_sink = use_attention_sink
 
         # QKV embedding
         self.linear1 = nn.Linear(emb_size, 3 * emb_size)
@@ -92,6 +116,11 @@ class WindowMSA(nn.Module):
 
         # Initialize relative position embedding
         self.rel_pos_embed = RelativePositionEmbed(window_size=self.window_size)
+
+        if self.use_attention_sink:
+            self.attn_sink = _build_attn_sink(num_heads, window_size)
+        else:
+            self.register_parameter("attn_sink", None)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         """Forward method for Window-MSA."""
@@ -145,6 +174,9 @@ class WindowMSA(nn.Module):
         # Relative position embedding.
         wei = self.rel_pos_embed(wei)
 
+        if self.use_attention_sink:
+            wei = wei + self.attn_sink
+
         # Passing dim=-1 to softmax ensures that the softmax operation is
         # applied along the last dimension of the wei tensor, which corresponds
         # to the attention weights between tokens within the same window.
@@ -169,23 +201,18 @@ class WindowMSA(nn.Module):
 class ShiftedWindowMSA(nn.Module):
     """Shifted Windowed Multi-headed Self-Attention.
 
-    This module is designed to apply multi-headed self-attention within
-    non-overlapping windows of tokens. The windows are shifted by half the
-    window size to allow cross-attention between spatial windows.
+    Adds a half-window spatial shift before window partitioning to permit
+    cross-window interactions.
 
-    Embedding size is the input dimension of the tokens. The embedding size
-    must be evenly divisible by the number of heads. Moreover, the number of
-    tokens, L, must satisfy L=patch_grid_size[0]*patch_grid_size[1]. The
-    respective `window_size` dimensions must divide the `patch_grid_size`
-    dimensions evenly.
+    Attention Sink (optional):
+        Same behavior as in WindowMSA (see above).
 
     Args:
-        emb_size (int): Incoming embedding dimension.
-        num_heads (int): Number of heads to use in the MSA.
-        patch_grid_size (int, int): Grid dimensions making up the token list.
-        window_size (int, int): Dimensions of window to use on the patch grid.
-                                NOTE: Each dimension must be divisble by 2.
-
+        emb_size (int)
+        num_heads (int)
+        patch_grid_size (int, int)
+        window_size (int, int): Each dim must be even.
+        use_attention_sink (bool)
     """
 
     def __init__(
@@ -194,6 +221,7 @@ class ShiftedWindowMSA(nn.Module):
         num_heads: int = 10,
         patch_grid_size: (int, int) = (16, 32),
         window_size: (int, int) = (8, 4),
+        use_attention_sink: bool = True,
     ) -> None:
         """Initialization method."""
         super().__init__()
@@ -252,6 +280,7 @@ class ShiftedWindowMSA(nn.Module):
         self.num_heads = num_heads
         self.patch_grid_size = patch_grid_size
         self.window_size = window_size
+        self.use_attention_sink = use_attention_sink
 
         # QKV embedding
         self.linear1 = nn.Linear(emb_size, 3 * emb_size)
@@ -261,6 +290,11 @@ class ShiftedWindowMSA(nn.Module):
 
         # Initialize relative position embedding
         self.rel_pos_embed = RelativePositionEmbed(window_size=self.window_size)
+
+        if self.use_attention_sink:
+            self.attn_sink = _build_attn_sink(num_heads, window_size)
+        else:
+            self.register_parameter("attn_sink", None)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         """Forward method for Windowed MSA."""
@@ -371,6 +405,9 @@ class ShiftedWindowMSA(nn.Module):
         # corresponding to the last Ww-dimension entry.
         wei[:, :, :, -1] += column_mask
 
+        if self.use_attention_sink:
+            wei = wei + self.attn_sink
+
         # Passing dim=-1 to softmax ensures that the softmax operation is
         # applied along the last dimension of the wei tensor, which corresponds
         # to the attention weights between tokens within the same window.
@@ -395,16 +432,18 @@ class ShiftedWindowMSA(nn.Module):
 class WindowCosMSA(nn.Module):
     """Cosine-Attention Windowed-MSA.
 
-    This class modifies the `WindowMSA` class to use a *cosine* self-attention
-    with a learnable per-head scaling. In SWIN-V2 this was introduced to
-    stabilize large-model training.
+    Uses cosine similarity with a per-head learnable logit scale.
+
+    Attention Sink:
+        Optional additive bias (see WindowMSA) applied after relative position
+        embedding and before softmax.
 
     Args:
-        emb_size (int): Incoming embedding dimension.
-        num_heads (int): Number of heads to use in the MSA.
-        patch_grid_size (int, int): Grid dimensions making up the token list.
-        window_size (int, int): Dimensions of window to use on the patch grid.
-
+        emb_size (int)
+        num_heads (int)
+        patch_grid_size (int, int)
+        window_size (int, int)
+        use_attention_sink (bool)
     """
 
     def __init__(
@@ -413,6 +452,7 @@ class WindowCosMSA(nn.Module):
         num_heads: int = 10,
         patch_grid_size: (int, int) = (16, 32),
         window_size: (int, int) = (8, 4),
+        use_attention_sink: bool = True,
     ) -> None:
         """Initialization method for Cos-WindowMSA."""
         super().__init__()
@@ -455,6 +495,7 @@ class WindowCosMSA(nn.Module):
         self.num_heads = num_heads
         self.patch_grid_size = patch_grid_size
         self.window_size = window_size
+        self.use_attention_sink = use_attention_sink
 
         # Learnable per-head attention scaling
         # Multiplies attn.shape=(B, num_heads, Hw, Ww, wh*ww, wh*ww)
@@ -471,6 +512,10 @@ class WindowCosMSA(nn.Module):
         # Initialize relative position embedding
         self.rel_pos_embed = RelativePositionEmbed(window_size=self.window_size)
 
+        if self.use_attention_sink:
+            self.attn_sink = _build_attn_sink(num_heads, window_size)
+        else:
+            self.register_parameter("attn_sink", None)
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         """Forward method for Cos-WindowMSA."""
         # B: Batch-size
@@ -530,6 +575,9 @@ class WindowCosMSA(nn.Module):
         # Relative position embedding.
         wei = self.rel_pos_embed(wei)
 
+        if self.use_attention_sink:
+            wei = wei + self.attn_sink
+
         # Passing dim=-1 to softmax ensures that the softmax operation is
         # applied along the last dimension of the wei tensor, which corresponds
         # to the attention weights between tokens within the same window.
@@ -554,17 +602,15 @@ class WindowCosMSA(nn.Module):
 class ShiftedWindowCosMSA(nn.Module):
     """Cosine-Attention Shifted Window-MSA.
 
-    This class modifies the `ShiftedWindowMSA` class to use a *cosine*
-    self-attention with a learnable per-head scaling. In SWIN-V2 this was
-    introduced to stabilize large-model training.
+    Adds spatial shift (like ShiftedWindowMSA) plus cosine attention with
+    logit scaling (SWIN-V2 style), plus optional attention sink.
 
     Args:
-        emb_size (int): Incoming embedding dimension.
-        num_heads (int): Number of heads to use in the MSA.
-        patch_grid_size (int, int): Grid dimensions making up the token list.
-        window_size (int, int): Dimensions of window to use on the patch grid.
-                                NOTE: Each dimension must be divisble by 2.
-
+        emb_size (int)
+        num_heads (int)
+        patch_grid_size (int, int)
+        window_size (int, int)
+        use_attention_sink (bool)
     """
 
     def __init__(
@@ -573,6 +619,7 @@ class ShiftedWindowCosMSA(nn.Module):
         num_heads: int = 10,
         patch_grid_size: (int, int) = (16, 32),
         window_size: (int, int) = (8, 4),
+        use_attention_sink: bool = True,
     ) -> None:
         """Initialization for Cos-WindowMSA."""
         super().__init__()
@@ -615,6 +662,7 @@ class ShiftedWindowCosMSA(nn.Module):
         self.num_heads = num_heads
         self.patch_grid_size = patch_grid_size
         self.window_size = window_size
+        self.use_attention_sink = use_attention_sink
 
         # Learnable per-head attention scaling
         # Multiplies attn.shape=(B, num_heads, Hw, Ww, wh*ww, wh*ww)
@@ -629,6 +677,10 @@ class ShiftedWindowCosMSA(nn.Module):
         self.linear2 = nn.Linear(emb_size, emb_size)
 
         # Initialize relative position embedding
+        if self.use_attention_sink:
+            self.attn_sink = _build_attn_sink(num_heads, window_size)
+        else:
+            self.register_parameter("attn_sink", None)
         self.rel_pos_embed = RelativePositionEmbed(window_size=self.window_size)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
@@ -746,6 +798,9 @@ class ShiftedWindowCosMSA(nn.Module):
         # corresponding to the last Ww-dimension entry.
         wei[:, :, :, -1] += column_mask
 
+        if self.use_attention_sink:
+            wei = wei + self.attn_sink
+
         # Passing dim=-1 to softmax ensures that the softmax operation is
         # applied along the last dimension of the wei tensor, which corresponds
         # to the attention weights between tokens within the same window.
@@ -768,34 +823,29 @@ class ShiftedWindowCosMSA(nn.Module):
 
 
 if __name__ == "__main__":
-    """Usage Example.
-
-    """
-
-    # Assume original image is (1120, 800) and embedded with
-    # patch-size (20, 20).
-    #
-    # (B, token_number, E) = (3, 1024, 64)
+    # Usage Example.
     x = torch.rand(3, 56 * 40, 64)
-
     device = "cuda" if torch.cuda.is_available() else "cpu"
     x = x.type(torch.FloatTensor).to(device)
 
     num_heads = 8
     emb_size = 64
-    window_size = (8, 10)  # Due to shift each dimension must be divisible by 2.
+    window_size = (8, 10)
     patch_grid_size = (56, 40)
+
     model_WMSA = WindowMSA(
         emb_size=emb_size,
         num_heads=num_heads,
         patch_grid_size=patch_grid_size,
         window_size=window_size,
+        use_attention_sink=True,
     ).to(device)
     model_SWMSA = ShiftedWindowMSA(
         emb_size=emb_size,
         num_heads=num_heads,
         patch_grid_size=patch_grid_size,
         window_size=window_size,
+        use_attention_sink=True,
     ).to(device)
 
     print("Input shape:", x.shape)
