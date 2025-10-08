@@ -1,0 +1,1 @@
+python TandVplot.py @TandV_2.input; echo 2; python TandVplot.py @TandV_100.input; echo 100; convert -delay 100 -loop 0 ch_ddp_lrstudy1/study002_TandV_curve.png ch_ddp_lrstudy1/study100_TandV_curve.png compare.gif

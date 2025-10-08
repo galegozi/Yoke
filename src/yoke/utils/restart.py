@@ -57,6 +57,10 @@ def continuation_setup(
             "<epochIDX>", f"{last_epoch + 1:04d}"
         )
 
+        new_training_slurm_data = new_training_slurm_data.replace(
+            "<EPOCH>", f"restart_training_epoch{last_epoch + 1:04d}"
+        )
+
         with open(os.path.join("./", new_training_filepath), "w") as f:
             f.write(new_training_slurm_data)
 

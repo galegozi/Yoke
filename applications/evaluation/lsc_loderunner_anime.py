@@ -214,11 +214,15 @@ def prepare_input_images(npzfile: str, default_vars: list[str]) -> torch.Tensor:
     # Concatenate images channel first.
     return torch.tensor(np.stack(input_img_list, axis=0)).to(torch.float32)
 
+def create_left_half(right):
+    l = np.fliplr(right)
+    return np.hstack((l, right))
 
 if __name__ == "__main__":
+    print("In lsc_loderunner_anime main")
     # Parse commandline arguments
     args_ns = parser.parse_args()
-
+    print(f'args_ns = {args_ns}')
     # Assign command-line arguments
     checkpoint = args_ns.checkpoint
     indir = args_ns.indir
@@ -253,8 +257,8 @@ if __name__ == "__main__":
     block_structure = (
         1,
         1,
-        11,
-        2,
+        3,
+        1,
     )
     model = LodeRunner(
         default_vars=default_vars,
@@ -287,6 +291,7 @@ if __name__ == "__main__":
     )
 
     checkpoint_epoch = load_model_and_optimizer_hdf5(model, optimizer, checkpoint)
+    print('Loaded model.')
     model.eval()
 
     # Build input data
@@ -295,8 +300,10 @@ if __name__ == "__main__":
 
     # Loop through images
     for k, npzfile in enumerate(npz_list):
+        print(k)
         # Get index
         Dt = DT_CONST if mode != "timestep" else torch.tensor([k * TIMESTEP_DELTA])
+        print(f'Using dt = {Dt}')
         pviIDX = npzfile.split("idx")[1]
         pviIDX = int(pviIDX.split(".")[0])
 
@@ -304,10 +311,12 @@ if __name__ == "__main__":
         simtime = singlePVIarray(npzfile=npzfile, FIELD="sim_time")
         Rcoord = singlePVIarray(npzfile=npzfile, FIELD="Rcoord")
         Zcoord = singlePVIarray(npzfile=npzfile, FIELD="Zcoord")
+        print('Extracted from NPZ files.')
 
         # Step prediction
         temp_img = prepare_input_images(npzfile, default_vars)
         if k == 0:
+            print('Using k = 0')
             initial_input = temp_img.clone()
         input_img = initial_input if mode == "timestep" else temp_img
 
@@ -360,7 +369,7 @@ if __name__ == "__main__":
         fig1, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(16, 6))
         fig1.suptitle(f"T={float(simtime):.2f}us", fontsize=18)
         img1 = ax1.imshow(
-            true_rho,
+            create_left_half(true_rho),
             aspect="equal",
             extent=[0.0, Rcoord.max(), Zcoord.min(), Zcoord.max()],
             origin="lower",
@@ -373,7 +382,7 @@ if __name__ == "__main__":
         ax1.set_title("True", fontsize=18)
 
         img2 = ax2.imshow(
-            pred_rho,
+            create_left_half(pred_rho),
             aspect="equal",
             extent=[0.0, Rcoord.max(), Zcoord.min(), Zcoord.max()],
             origin="lower",
@@ -390,7 +399,7 @@ if __name__ == "__main__":
 
         discrepancy = np.abs(true_rho - pred_rho)
         img3 = ax3.imshow(
-            discrepancy,
+            create_left_half(discrepancy),
             aspect="equal",
             extent=[0.0, Rcoord.max(), Zcoord.min(), Zcoord.max()],
             origin="lower",

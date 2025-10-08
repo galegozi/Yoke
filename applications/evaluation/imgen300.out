@@ -1,0 +1,2116 @@
+PARTITION                     GRES NODELIST
+standard*                   (null) nid[001002-001095,001098-001127,001256-001383,001512-001609,001611-001756,001758,001760,001762,001764-001769,001772-001809,001811-002057,002060-003047]
+debug                   (null) nid[001002-001095,001098-001127,001256-001383,001512-001609,001611-001756,001758,001760,001762,001764-001769,001772-001809,001811-002057,002060-003047]
+gpu gpu:nvidia_a100-sxm4-80g nid[001128-001129,001132-001133,001136-001137,001140-001141,001144-001145,001148-001149,001152-001153,001156-001157,001160-001161,001164-001165,001168-001169]
+gpu gpu:nvidia_a100-sxm4-40g nid[001192-001193,001196-001197,001200-001201,001204-001205,001208-001209,001212-001213,001216-001217,001220-001221,001224-001225,001228-001229,001232-001233,001236-001237,001240-001241,001244-001245,001248-001249,001252-001253,001384-001385,001388-001389,001392-001393,001396-001397,001400-001401,001404-001405,001408-001409,001412-001413,001416-001417,001420-001421,001424-001425,001428-001429,001432-001433,001436-001437,001440-001441,001444-001445,001448-001449,001452-001453,001456-001457,001460-001461,001464-001465,001468-001469,001472-001473,001476-001477,001480-001481,001484-001485,001488-001489,001492-001493,001496-001497,001500-001501,001504-001505,001508-001509]
+gpu_debug gpu:nvidia_a100-sxm4-40g nid[001192-001193,001196-001197,001200-001201,001204-001205,001208-001209,001212-001213,001216-001217,001220-001221,001224-001225,001228-001229,001232-001233,001236-001237,001240-001241,001244-001245,001248-001249,001252-001253,001384-001385,001388-001389,001392-001393,001396-001397,001400-001401,001404-001405,001408-001409,001412-001413,001416-001417,001420-001421,001424-001425,001428-001429,001432-001433,001436-001437,001440-001441,001444-001445,001448-001449,001452-001453,001456-001457,001460-001461,001464-001465,001468-001469,001472-001473,001476-001477,001480-001481,001484-001485,001488-001489,001492-001493,001496-001497,001500-001501,001504-001505,001508-001509]
+ci                   (null) nid[001002-001095,001098-001127,001256-001383,001512-001609,001611-001756,001758,001760,001762,001764-001769,001772-001809,001811-002057,002060-003047]
+shasta_dev                   (null) nid[001000-001001]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+In lsc_loderunner_anime main
+args_ns = Namespace(checkpoint='../harnesses/chicoma_lsc_loderunner-ch-subsampling/runs/study_300/study300_modelState_epoch0120.hdf5', indir='/lustre/scratch5/exempt/artimis/data/lsc240420/', outdir='../harnesses/chicoma_lsc_loderunner-ch-subsampling/runs/GIF/study_300/epoch120/single', runID=400, embed_dim=96, verbose=True, mode='single')
+NPZ files: ['/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00000.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00001.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00002.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00003.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00004.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00005.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00006.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00007.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00009.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00010.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00011.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00012.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00013.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00014.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00015.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00016.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00017.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00018.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00019.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00020.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00021.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00022.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00023.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00024.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00025.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00026.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00027.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00028.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00029.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00030.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00031.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00032.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00033.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00034.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00035.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00036.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00037.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00038.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00039.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00040.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00041.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00044.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00045.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00046.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00047.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00048.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00049.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00050.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00051.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00052.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00053.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00054.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00055.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00056.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00057.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00058.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00059.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00060.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00061.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00062.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00063.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00064.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00065.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00066.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00067.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00068.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00069.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00070.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00071.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00072.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00073.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00074.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00076.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00077.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00078.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00079.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00080.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00081.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00082.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00083.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00084.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00085.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00086.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00087.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00088.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00089.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00090.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00091.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00092.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00093.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00094.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00095.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00096.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00097.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00098.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00099.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00100.npz']
+Loaded model.
+0
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+Using k = 0
+1
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+2
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+3
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+4
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+5
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+6
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+7
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+8
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+9
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+10
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+11
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+12
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+13
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+14
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+15
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+16
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+17
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+18
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+19
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+20
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+21
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+22
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+23
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+24
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+25
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+26
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+27
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+28
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+29
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+30
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+31
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+32
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+33
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+34
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+35
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+36
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+37
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+38
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+39
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+40
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+41
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+42
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+43
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+44
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+45
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+46
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+47
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+48
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+49
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+50
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+51
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+52
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+53
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+54
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+55
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+56
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+57
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+58
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+59
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+60
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+61
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+62
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+63
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+64
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+65
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+66
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+67
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+68
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+69
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+70
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+71
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+72
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+73
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+74
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+75
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+76
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+77
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+78
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+79
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+80
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+81
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+82
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+83
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+84
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+85
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+86
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+87
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+88
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+89
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+90
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+91
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+92
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+93
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+94
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+95
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+96
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+
+Now processing study_002
+	***** Skipping study_002. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_100
+	***** Skipping study_100. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_102
+	***** Skipping study_102. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_200
+	***** Skipping study_200. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_201
+	***** Skipping study_201. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_205
+	***** Skipping study_205. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_210
+	***** Skipping study_210. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_225
+	***** Skipping study_225. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_250
+	***** Skipping study_250. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_300
+	hdf5_file_max_epoch:
+	../harnesses/chicoma_lsc_loderunner-ch-subsampling/runs/study_300/study300_modelState_epoch0120.hdf5
+Starting subprocess for 300 with args ['python3', 'lsc_loderunner_anime.py', '--checkpoint', '../harnesses/chicoma_lsc_loderunner-ch-subsampling/runs/study_300/study300_modelState_epoch0120.hdf5', '--indir', '/lustre/scratch5/exempt/artimis/data/lsc240420/', '--outdir', '../harnesses/chicoma_lsc_loderunner-ch-subsampling/runs/GIF/study_300/epoch120/single', '--runID', '400', '--embed_dim', '96', '--mode', 'single', '--verbose']
+	Completed processing study_300
+
+	==========================================================
+In lsc_loderunner_anime main
+args_ns = Namespace(checkpoint='../harnesses/chicoma_lsc_loderunner-ch-subsampling/runs/study_300/study300_modelState_epoch0120.hdf5', indir='/lustre/scratch5/exempt/artimis/data/lsc240420/', outdir='../harnesses/chicoma_lsc_loderunner-ch-subsampling/runs/GIF/study_300/epoch120/chained', runID=400, embed_dim=96, verbose=True, mode='chained')
+NPZ files: ['/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00000.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00001.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00002.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00003.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00004.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00005.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00006.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00007.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00009.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00010.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00011.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00012.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00013.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00014.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00015.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00016.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00017.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00018.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00019.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00020.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00021.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00022.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00023.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00024.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00025.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00026.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00027.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00028.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00029.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00030.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00031.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00032.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00033.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00034.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00035.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00036.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00037.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00038.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00039.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00040.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00041.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00044.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00045.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00046.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00047.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00048.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00049.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00050.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00051.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00052.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00053.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00054.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00055.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00056.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00057.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00058.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00059.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00060.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00061.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00062.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00063.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00064.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00065.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00066.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00067.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00068.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00069.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00070.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00071.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00072.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00073.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00074.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00076.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00077.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00078.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00079.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00080.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00081.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00082.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00083.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00084.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00085.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00086.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00087.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00088.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00089.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00090.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00091.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00092.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00093.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00094.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00095.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00096.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00097.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00098.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00099.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00100.npz']
+Loaded model.
+0
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+Using k = 0
+1
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+2
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+3
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+4
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+5
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+6
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+7
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+8
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+9
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+10
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+11
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+12
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+13
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+14
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+15
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+16
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+17
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+18
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+19
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+20
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+21
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+22
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+23
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+24
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+25
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+26
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+27
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+28
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+29
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+30
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+31
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+32
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+33
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+34
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+35
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+36
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+37
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+38
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+39
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+40
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+41
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+42
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+43
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+44
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+45
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+46
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+47
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+48
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+49
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+50
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+51
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+52
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+53
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+54
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+55
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+56
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+57
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+58
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+59
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+60
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+61
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+62
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+63
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+64
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+65
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+66
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+67
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+68
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+69
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+70
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+71
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+72
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+73
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+74
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+75
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+76
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+77
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+78
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+79
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+80
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+81
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+82
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+83
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+84
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+85
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+86
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+87
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+88
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+89
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+90
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+91
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+92
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+93
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+94
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+95
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+96
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+
+Now processing study_002
+	***** Skipping study_002. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_100
+	***** Skipping study_100. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_102
+	***** Skipping study_102. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_200
+	***** Skipping study_200. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_201
+	***** Skipping study_201. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_205
+	***** Skipping study_205. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_210
+	***** Skipping study_210. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_225
+	***** Skipping study_225. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_250
+	***** Skipping study_250. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_300
+	hdf5_file_max_epoch:
+	../harnesses/chicoma_lsc_loderunner-ch-subsampling/runs/study_300/study300_modelState_epoch0120.hdf5
+Starting subprocess for 300 with args ['python3', 'lsc_loderunner_anime.py', '--checkpoint', '../harnesses/chicoma_lsc_loderunner-ch-subsampling/runs/study_300/study300_modelState_epoch0120.hdf5', '--indir', '/lustre/scratch5/exempt/artimis/data/lsc240420/', '--outdir', '../harnesses/chicoma_lsc_loderunner-ch-subsampling/runs/GIF/study_300/epoch120/chained', '--runID', '400', '--embed_dim', '96', '--mode', 'chained', '--verbose']
+	Completed processing study_300
+
+	==========================================================
+In lsc_loderunner_anime main
+args_ns = Namespace(checkpoint='../harnesses/chicoma_lsc_loderunner-ch-subsampling/runs/study_300/study300_modelState_epoch0120.hdf5', indir='/lustre/scratch5/exempt/artimis/data/lsc240420/', outdir='../harnesses/chicoma_lsc_loderunner-ch-subsampling/runs/GIF/study_300/epoch120/timestep', runID=400, embed_dim=96, verbose=True, mode='timestep')
+NPZ files: ['/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00000.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00001.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00002.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00003.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00004.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00005.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00006.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00007.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00009.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00010.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00011.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00012.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00013.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00014.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00015.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00016.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00017.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00018.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00019.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00020.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00021.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00022.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00023.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00024.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00025.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00026.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00027.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00028.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00029.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00030.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00031.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00032.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00033.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00034.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00035.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00036.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00037.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00038.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00039.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00040.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00041.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00044.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00045.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00046.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00047.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00048.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00049.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00050.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00051.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00052.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00053.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00054.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00055.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00056.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00057.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00058.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00059.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00060.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00061.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00062.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00063.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00064.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00065.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00066.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00067.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00068.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00069.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00070.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00071.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00072.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00073.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00074.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00076.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00077.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00078.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00079.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00080.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00081.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00082.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00083.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00084.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00085.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00086.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00087.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00088.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00089.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00090.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00091.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00092.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00093.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00094.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00095.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00096.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00097.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00098.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00099.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id00400_pvi_idx00100.npz']
+Loaded model.
+0
+Using dt = tensor([0.])
+Extracted from NPZ files.
+Using k = 0
+1
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+2
+Using dt = tensor([0.5000])
+Extracted from NPZ files.
+3
+Using dt = tensor([0.7500])
+Extracted from NPZ files.
+4
+Using dt = tensor([1.])
+Extracted from NPZ files.
+5
+Using dt = tensor([1.2500])
+Extracted from NPZ files.
+6
+Using dt = tensor([1.5000])
+Extracted from NPZ files.
+7
+Using dt = tensor([1.7500])
+Extracted from NPZ files.
+8
+Using dt = tensor([2.])
+Extracted from NPZ files.
+9
+Using dt = tensor([2.2500])
+Extracted from NPZ files.
+10
+Using dt = tensor([2.5000])
+Extracted from NPZ files.
+11
+Using dt = tensor([2.7500])
+Extracted from NPZ files.
+12
+Using dt = tensor([3.])
+Extracted from NPZ files.
+13
+Using dt = tensor([3.2500])
+Extracted from NPZ files.
+14
+Using dt = tensor([3.5000])
+Extracted from NPZ files.
+15
+Using dt = tensor([3.7500])
+Extracted from NPZ files.
+16
+Using dt = tensor([4.])
+Extracted from NPZ files.
+17
+Using dt = tensor([4.2500])
+Extracted from NPZ files.
+18
+Using dt = tensor([4.5000])
+Extracted from NPZ files.
+19
+Using dt = tensor([4.7500])
+Extracted from NPZ files.
+20
+Using dt = tensor([5.])
+Extracted from NPZ files.
+21
+Using dt = tensor([5.2500])
+Extracted from NPZ files.
+22
+Using dt = tensor([5.5000])
+Extracted from NPZ files.
+23
+Using dt = tensor([5.7500])
+Extracted from NPZ files.
+24
+Using dt = tensor([6.])
+Extracted from NPZ files.
+25
+Using dt = tensor([6.2500])
+Extracted from NPZ files.
+26
+Using dt = tensor([6.5000])
+Extracted from NPZ files.
+27
+Using dt = tensor([6.7500])
+Extracted from NPZ files.
+28
+Using dt = tensor([7.])
+Extracted from NPZ files.
+29
+Using dt = tensor([7.2500])
+Extracted from NPZ files.
+30
+Using dt = tensor([7.5000])
+Extracted from NPZ files.
+31
+Using dt = tensor([7.7500])
+Extracted from NPZ files.
+32
+Using dt = tensor([8.])
+Extracted from NPZ files.
+33
+Using dt = tensor([8.2500])
+Extracted from NPZ files.
+34
+Using dt = tensor([8.5000])
+Extracted from NPZ files.
+35
+Using dt = tensor([8.7500])
+Extracted from NPZ files.
+36
+Using dt = tensor([9.])
+Extracted from NPZ files.
+37
+Using dt = tensor([9.2500])
+Extracted from NPZ files.
+38
+Using dt = tensor([9.5000])
+Extracted from NPZ files.
+39
+Using dt = tensor([9.7500])
+Extracted from NPZ files.
+40
+Using dt = tensor([10.])
+Extracted from NPZ files.
+41
+Using dt = tensor([10.2500])
+Extracted from NPZ files.
+42
+Using dt = tensor([10.5000])
+Extracted from NPZ files.
+43
+Using dt = tensor([10.7500])
+Extracted from NPZ files.
+44
+Using dt = tensor([11.])
+Extracted from NPZ files.
+45
+Using dt = tensor([11.2500])
+Extracted from NPZ files.
+46
+Using dt = tensor([11.5000])
+Extracted from NPZ files.
+47
+Using dt = tensor([11.7500])
+Extracted from NPZ files.
+48
+Using dt = tensor([12.])
+Extracted from NPZ files.
+49
+Using dt = tensor([12.2500])
+Extracted from NPZ files.
+50
+Using dt = tensor([12.5000])
+Extracted from NPZ files.
+51
+Using dt = tensor([12.7500])
+Extracted from NPZ files.
+52
+Using dt = tensor([13.])
+Extracted from NPZ files.
+53
+Using dt = tensor([13.2500])
+Extracted from NPZ files.
+54
+Using dt = tensor([13.5000])
+Extracted from NPZ files.
+55
+Using dt = tensor([13.7500])
+Extracted from NPZ files.
+56
+Using dt = tensor([14.])
+Extracted from NPZ files.
+57
+Using dt = tensor([14.2500])
+Extracted from NPZ files.
+58
+Using dt = tensor([14.5000])
+Extracted from NPZ files.
+59
+Using dt = tensor([14.7500])
+Extracted from NPZ files.
+60
+Using dt = tensor([15.])
+Extracted from NPZ files.
+61
+Using dt = tensor([15.2500])
+Extracted from NPZ files.
+62
+Using dt = tensor([15.5000])
+Extracted from NPZ files.
+63
+Using dt = tensor([15.7500])
+Extracted from NPZ files.
+64
+Using dt = tensor([16.])
+Extracted from NPZ files.
+65
+Using dt = tensor([16.2500])
+Extracted from NPZ files.
+66
+Using dt = tensor([16.5000])
+Extracted from NPZ files.
+67
+Using dt = tensor([16.7500])
+Extracted from NPZ files.
+68
+Using dt = tensor([17.])
+Extracted from NPZ files.
+69
+Using dt = tensor([17.2500])
+Extracted from NPZ files.
+70
+Using dt = tensor([17.5000])
+Extracted from NPZ files.
+71
+Using dt = tensor([17.7500])
+Extracted from NPZ files.
+72
+Using dt = tensor([18.])
+Extracted from NPZ files.
+73
+Using dt = tensor([18.2500])
+Extracted from NPZ files.
+74
+Using dt = tensor([18.5000])
+Extracted from NPZ files.
+75
+Using dt = tensor([18.7500])
+Extracted from NPZ files.
+76
+Using dt = tensor([19.])
+Extracted from NPZ files.
+77
+Using dt = tensor([19.2500])
+Extracted from NPZ files.
+78
+Using dt = tensor([19.5000])
+Extracted from NPZ files.
+79
+Using dt = tensor([19.7500])
+Extracted from NPZ files.
+80
+Using dt = tensor([20.])
+Extracted from NPZ files.
+81
+Using dt = tensor([20.2500])
+Extracted from NPZ files.
+82
+Using dt = tensor([20.5000])
+Extracted from NPZ files.
+83
+Using dt = tensor([20.7500])
+Extracted from NPZ files.
+84
+Using dt = tensor([21.])
+Extracted from NPZ files.
+85
+Using dt = tensor([21.2500])
+Extracted from NPZ files.
+86
+Using dt = tensor([21.5000])
+Extracted from NPZ files.
+87
+Using dt = tensor([21.7500])
+Extracted from NPZ files.
+88
+Using dt = tensor([22.])
+Extracted from NPZ files.
+89
+Using dt = tensor([22.2500])
+Extracted from NPZ files.
+90
+Using dt = tensor([22.5000])
+Extracted from NPZ files.
+91
+Using dt = tensor([22.7500])
+Extracted from NPZ files.
+92
+Using dt = tensor([23.])
+Extracted from NPZ files.
+93
+Using dt = tensor([23.2500])
+Extracted from NPZ files.
+94
+Using dt = tensor([23.5000])
+Extracted from NPZ files.
+95
+Using dt = tensor([23.7500])
+Extracted from NPZ files.
+96
+Using dt = tensor([24.])
+Extracted from NPZ files.
+
+Now processing study_002
+	***** Skipping study_002. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_100
+	***** Skipping study_100. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_102
+	***** Skipping study_102. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_200
+	***** Skipping study_200. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_201
+	***** Skipping study_201. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_205
+	***** Skipping study_205. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_210
+	***** Skipping study_210. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_225
+	***** Skipping study_225. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_250
+	***** Skipping study_250. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_300
+	hdf5_file_max_epoch:
+	../harnesses/chicoma_lsc_loderunner-ch-subsampling/runs/study_300/study300_modelState_epoch0120.hdf5
+Starting subprocess for 300 with args ['python3', 'lsc_loderunner_anime.py', '--checkpoint', '../harnesses/chicoma_lsc_loderunner-ch-subsampling/runs/study_300/study300_modelState_epoch0120.hdf5', '--indir', '/lustre/scratch5/exempt/artimis/data/lsc240420/', '--outdir', '../harnesses/chicoma_lsc_loderunner-ch-subsampling/runs/GIF/study_300/epoch120/timestep', '--runID', '400', '--embed_dim', '96', '--mode', 'timestep', '--verbose']
+	Completed processing study_300
+
+	==========================================================
+In lsc_loderunner_anime main
+args_ns = Namespace(checkpoint='../harnesses/chicoma_lsc_loderunner-ch-subsampling/runs/study_300/study300_modelState_epoch0120.hdf5', indir='/lustre/scratch5/exempt/artimis/data/lsc240420/', outdir='../harnesses/chicoma_lsc_loderunner-ch-subsampling/runs/GIF/study_300/epoch120/single', runID=4208, embed_dim=96, verbose=True, mode='single')
+NPZ files: ['/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00000.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00001.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00002.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00003.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00004.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00005.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00007.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00008.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00009.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00010.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00011.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00012.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00013.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00014.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00015.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00016.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00017.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00018.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00019.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00020.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00021.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00022.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00023.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00024.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00025.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00026.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00027.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00028.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00029.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00030.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00031.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00032.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00033.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00034.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00035.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00036.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00037.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00038.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00039.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00040.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00041.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00042.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00043.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00044.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00045.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00046.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00047.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00048.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00049.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00050.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00051.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00053.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00054.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00055.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00056.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00057.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00058.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00059.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00060.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00061.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00062.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00063.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00064.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00065.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00066.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00067.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00068.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00069.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00070.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00071.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00072.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00073.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00074.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00075.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00076.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00077.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00078.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00079.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00080.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00081.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00082.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00083.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00085.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00086.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00087.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00088.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00089.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00090.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00091.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00092.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00094.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00095.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00096.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00097.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00098.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00099.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00100.npz']
+Loaded model.
+0
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+Using k = 0
+1
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+2
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+3
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+4
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+5
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+6
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+7
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+8
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+9
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+10
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+11
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+12
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+13
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+14
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+15
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+16
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+17
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+18
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+19
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+20
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+21
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+22
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+23
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+24
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+25
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+26
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+27
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+28
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+29
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+30
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+31
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+32
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+33
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+34
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+35
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+36
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+37
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+38
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+39
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+40
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+41
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+42
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+43
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+44
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+45
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+46
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+47
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+48
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+49
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+50
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+51
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+52
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+53
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+54
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+55
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+56
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+57
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+58
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+59
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+60
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+61
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+62
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+63
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+64
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+65
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+66
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+67
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+68
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+69
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+70
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+71
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+72
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+73
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+74
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+75
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+76
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+77
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+78
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+79
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+80
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+81
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+82
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+83
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+84
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+85
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+86
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+87
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+88
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+89
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+90
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+91
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+92
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+93
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+94
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+95
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+96
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+
+Now processing study_002
+	***** Skipping study_002. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_100
+	***** Skipping study_100. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_102
+	***** Skipping study_102. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_200
+	***** Skipping study_200. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_201
+	***** Skipping study_201. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_205
+	***** Skipping study_205. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_210
+	***** Skipping study_210. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_225
+	***** Skipping study_225. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_250
+	***** Skipping study_250. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_300
+	hdf5_file_max_epoch:
+	../harnesses/chicoma_lsc_loderunner-ch-subsampling/runs/study_300/study300_modelState_epoch0120.hdf5
+Starting subprocess for 300 with args ['python3', 'lsc_loderunner_anime.py', '--checkpoint', '../harnesses/chicoma_lsc_loderunner-ch-subsampling/runs/study_300/study300_modelState_epoch0120.hdf5', '--indir', '/lustre/scratch5/exempt/artimis/data/lsc240420/', '--outdir', '../harnesses/chicoma_lsc_loderunner-ch-subsampling/runs/GIF/study_300/epoch120/single', '--runID', '4208', '--embed_dim', '96', '--mode', 'single', '--verbose']
+	Completed processing study_300
+
+	==========================================================
+In lsc_loderunner_anime main
+args_ns = Namespace(checkpoint='../harnesses/chicoma_lsc_loderunner-ch-subsampling/runs/study_300/study300_modelState_epoch0120.hdf5', indir='/lustre/scratch5/exempt/artimis/data/lsc240420/', outdir='../harnesses/chicoma_lsc_loderunner-ch-subsampling/runs/GIF/study_300/epoch120/chained', runID=4208, embed_dim=96, verbose=True, mode='chained')
+NPZ files: ['/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00000.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00001.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00002.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00003.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00004.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00005.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00007.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00008.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00009.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00010.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00011.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00012.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00013.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00014.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00015.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00016.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00017.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00018.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00019.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00020.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00021.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00022.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00023.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00024.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00025.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00026.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00027.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00028.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00029.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00030.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00031.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00032.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00033.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00034.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00035.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00036.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00037.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00038.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00039.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00040.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00041.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00042.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00043.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00044.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00045.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00046.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00047.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00048.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00049.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00050.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00051.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00053.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00054.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00055.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00056.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00057.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00058.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00059.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00060.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00061.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00062.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00063.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00064.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00065.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00066.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00067.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00068.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00069.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00070.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00071.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00072.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00073.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00074.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00075.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00076.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00077.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00078.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00079.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00080.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00081.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00082.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00083.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00085.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00086.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00087.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00088.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00089.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00090.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00091.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00092.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00094.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00095.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00096.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00097.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00098.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00099.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00100.npz']
+Loaded model.
+0
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+Using k = 0
+1
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+2
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+3
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+4
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+5
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+6
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+7
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+8
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+9
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+10
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+11
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+12
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+13
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+14
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+15
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+16
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+17
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+18
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+19
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+20
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+21
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+22
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+23
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+24
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+25
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+26
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+27
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+28
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+29
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+30
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+31
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+32
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+33
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+34
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+35
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+36
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+37
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+38
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+39
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+40
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+41
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+42
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+43
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+44
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+45
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+46
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+47
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+48
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+49
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+50
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+51
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+52
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+53
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+54
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+55
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+56
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+57
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+58
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+59
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+60
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+61
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+62
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+63
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+64
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+65
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+66
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+67
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+68
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+69
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+70
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+71
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+72
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+73
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+74
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+75
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+76
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+77
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+78
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+79
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+80
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+81
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+82
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+83
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+84
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+85
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+86
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+87
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+88
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+89
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+90
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+91
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+92
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+93
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+94
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+95
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+96
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+
+Now processing study_002
+	***** Skipping study_002. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_100
+	***** Skipping study_100. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_102
+	***** Skipping study_102. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_200
+	***** Skipping study_200. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_201
+	***** Skipping study_201. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_205
+	***** Skipping study_205. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_210
+	***** Skipping study_210. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_225
+	***** Skipping study_225. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_250
+	***** Skipping study_250. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_300
+	hdf5_file_max_epoch:
+	../harnesses/chicoma_lsc_loderunner-ch-subsampling/runs/study_300/study300_modelState_epoch0120.hdf5
+Starting subprocess for 300 with args ['python3', 'lsc_loderunner_anime.py', '--checkpoint', '../harnesses/chicoma_lsc_loderunner-ch-subsampling/runs/study_300/study300_modelState_epoch0120.hdf5', '--indir', '/lustre/scratch5/exempt/artimis/data/lsc240420/', '--outdir', '../harnesses/chicoma_lsc_loderunner-ch-subsampling/runs/GIF/study_300/epoch120/chained', '--runID', '4208', '--embed_dim', '96', '--mode', 'chained', '--verbose']
+	Completed processing study_300
+
+	==========================================================
+In lsc_loderunner_anime main
+args_ns = Namespace(checkpoint='../harnesses/chicoma_lsc_loderunner-ch-subsampling/runs/study_300/study300_modelState_epoch0120.hdf5', indir='/lustre/scratch5/exempt/artimis/data/lsc240420/', outdir='../harnesses/chicoma_lsc_loderunner-ch-subsampling/runs/GIF/study_300/epoch120/timestep', runID=4208, embed_dim=96, verbose=True, mode='timestep')
+NPZ files: ['/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00000.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00001.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00002.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00003.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00004.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00005.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00007.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00008.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00009.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00010.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00011.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00012.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00013.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00014.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00015.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00016.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00017.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00018.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00019.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00020.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00021.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00022.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00023.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00024.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00025.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00026.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00027.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00028.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00029.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00030.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00031.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00032.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00033.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00034.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00035.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00036.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00037.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00038.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00039.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00040.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00041.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00042.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00043.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00044.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00045.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00046.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00047.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00048.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00049.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00050.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00051.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00053.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00054.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00055.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00056.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00057.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00058.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00059.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00060.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00061.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00062.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00063.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00064.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00065.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00066.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00067.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00068.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00069.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00070.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00071.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00072.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00073.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00074.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00075.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00076.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00077.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00078.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00079.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00080.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00081.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00082.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00083.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00085.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00086.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00087.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00088.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00089.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00090.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00091.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00092.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00094.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00095.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00096.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00097.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00098.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00099.npz', '/lustre/scratch5/exempt/artimis/data/lsc240420/lsc240420_id04208_pvi_idx00100.npz']
+Loaded model.
+0
+Using dt = tensor([0.])
+Extracted from NPZ files.
+Using k = 0
+1
+Using dt = tensor([0.2500])
+Extracted from NPZ files.
+2
+Using dt = tensor([0.5000])
+Extracted from NPZ files.
+3
+Using dt = tensor([0.7500])
+Extracted from NPZ files.
+4
+Using dt = tensor([1.])
+Extracted from NPZ files.
+5
+Using dt = tensor([1.2500])
+Extracted from NPZ files.
+6
+Using dt = tensor([1.5000])
+Extracted from NPZ files.
+7
+Using dt = tensor([1.7500])
+Extracted from NPZ files.
+8
+Using dt = tensor([2.])
+Extracted from NPZ files.
+9
+Using dt = tensor([2.2500])
+Extracted from NPZ files.
+10
+Using dt = tensor([2.5000])
+Extracted from NPZ files.
+11
+Using dt = tensor([2.7500])
+Extracted from NPZ files.
+12
+Using dt = tensor([3.])
+Extracted from NPZ files.
+13
+Using dt = tensor([3.2500])
+Extracted from NPZ files.
+14
+Using dt = tensor([3.5000])
+Extracted from NPZ files.
+15
+Using dt = tensor([3.7500])
+Extracted from NPZ files.
+16
+Using dt = tensor([4.])
+Extracted from NPZ files.
+17
+Using dt = tensor([4.2500])
+Extracted from NPZ files.
+18
+Using dt = tensor([4.5000])
+Extracted from NPZ files.
+19
+Using dt = tensor([4.7500])
+Extracted from NPZ files.
+20
+Using dt = tensor([5.])
+Extracted from NPZ files.
+21
+Using dt = tensor([5.2500])
+Extracted from NPZ files.
+22
+Using dt = tensor([5.5000])
+Extracted from NPZ files.
+23
+Using dt = tensor([5.7500])
+Extracted from NPZ files.
+24
+Using dt = tensor([6.])
+Extracted from NPZ files.
+25
+Using dt = tensor([6.2500])
+Extracted from NPZ files.
+26
+Using dt = tensor([6.5000])
+Extracted from NPZ files.
+27
+Using dt = tensor([6.7500])
+Extracted from NPZ files.
+28
+Using dt = tensor([7.])
+Extracted from NPZ files.
+29
+Using dt = tensor([7.2500])
+Extracted from NPZ files.
+30
+Using dt = tensor([7.5000])
+Extracted from NPZ files.
+31
+Using dt = tensor([7.7500])
+Extracted from NPZ files.
+32
+Using dt = tensor([8.])
+Extracted from NPZ files.
+33
+Using dt = tensor([8.2500])
+Extracted from NPZ files.
+34
+Using dt = tensor([8.5000])
+Extracted from NPZ files.
+35
+Using dt = tensor([8.7500])
+Extracted from NPZ files.
+36
+Using dt = tensor([9.])
+Extracted from NPZ files.
+37
+Using dt = tensor([9.2500])
+Extracted from NPZ files.
+38
+Using dt = tensor([9.5000])
+Extracted from NPZ files.
+39
+Using dt = tensor([9.7500])
+Extracted from NPZ files.
+40
+Using dt = tensor([10.])
+Extracted from NPZ files.
+41
+Using dt = tensor([10.2500])
+Extracted from NPZ files.
+42
+Using dt = tensor([10.5000])
+Extracted from NPZ files.
+43
+Using dt = tensor([10.7500])
+Extracted from NPZ files.
+44
+Using dt = tensor([11.])
+Extracted from NPZ files.
+45
+Using dt = tensor([11.2500])
+Extracted from NPZ files.
+46
+Using dt = tensor([11.5000])
+Extracted from NPZ files.
+47
+Using dt = tensor([11.7500])
+Extracted from NPZ files.
+48
+Using dt = tensor([12.])
+Extracted from NPZ files.
+49
+Using dt = tensor([12.2500])
+Extracted from NPZ files.
+50
+Using dt = tensor([12.5000])
+Extracted from NPZ files.
+51
+Using dt = tensor([12.7500])
+Extracted from NPZ files.
+52
+Using dt = tensor([13.])
+Extracted from NPZ files.
+53
+Using dt = tensor([13.2500])
+Extracted from NPZ files.
+54
+Using dt = tensor([13.5000])
+Extracted from NPZ files.
+55
+Using dt = tensor([13.7500])
+Extracted from NPZ files.
+56
+Using dt = tensor([14.])
+Extracted from NPZ files.
+57
+Using dt = tensor([14.2500])
+Extracted from NPZ files.
+58
+Using dt = tensor([14.5000])
+Extracted from NPZ files.
+59
+Using dt = tensor([14.7500])
+Extracted from NPZ files.
+60
+Using dt = tensor([15.])
+Extracted from NPZ files.
+61
+Using dt = tensor([15.2500])
+Extracted from NPZ files.
+62
+Using dt = tensor([15.5000])
+Extracted from NPZ files.
+63
+Using dt = tensor([15.7500])
+Extracted from NPZ files.
+64
+Using dt = tensor([16.])
+Extracted from NPZ files.
+65
+Using dt = tensor([16.2500])
+Extracted from NPZ files.
+66
+Using dt = tensor([16.5000])
+Extracted from NPZ files.
+67
+Using dt = tensor([16.7500])
+Extracted from NPZ files.
+68
+Using dt = tensor([17.])
+Extracted from NPZ files.
+69
+Using dt = tensor([17.2500])
+Extracted from NPZ files.
+70
+Using dt = tensor([17.5000])
+Extracted from NPZ files.
+71
+Using dt = tensor([17.7500])
+Extracted from NPZ files.
+72
+Using dt = tensor([18.])
+Extracted from NPZ files.
+73
+Using dt = tensor([18.2500])
+Extracted from NPZ files.
+74
+Using dt = tensor([18.5000])
+Extracted from NPZ files.
+75
+Using dt = tensor([18.7500])
+Extracted from NPZ files.
+76
+Using dt = tensor([19.])
+Extracted from NPZ files.
+77
+Using dt = tensor([19.2500])
+Extracted from NPZ files.
+78
+Using dt = tensor([19.5000])
+Extracted from NPZ files.
+79
+Using dt = tensor([19.7500])
+Extracted from NPZ files.
+80
+Using dt = tensor([20.])
+Extracted from NPZ files.
+81
+Using dt = tensor([20.2500])
+Extracted from NPZ files.
+82
+Using dt = tensor([20.5000])
+Extracted from NPZ files.
+83
+Using dt = tensor([20.7500])
+Extracted from NPZ files.
+84
+Using dt = tensor([21.])
+Extracted from NPZ files.
+85
+Using dt = tensor([21.2500])
+Extracted from NPZ files.
+86
+Using dt = tensor([21.5000])
+Extracted from NPZ files.
+87
+Using dt = tensor([21.7500])
+Extracted from NPZ files.
+88
+Using dt = tensor([22.])
+Extracted from NPZ files.
+89
+Using dt = tensor([22.2500])
+Extracted from NPZ files.
+90
+Using dt = tensor([22.5000])
+Extracted from NPZ files.
+91
+Using dt = tensor([22.7500])
+Extracted from NPZ files.
+92
+Using dt = tensor([23.])
+Extracted from NPZ files.
+93
+Using dt = tensor([23.2500])
+Extracted from NPZ files.
+94
+Using dt = tensor([23.5000])
+Extracted from NPZ files.
+95
+Using dt = tensor([23.7500])
+Extracted from NPZ files.
+96
+Using dt = tensor([24.])
+Extracted from NPZ files.
+
+Now processing study_002
+	***** Skipping study_002. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_100
+	***** Skipping study_100. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_102
+	***** Skipping study_102. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_200
+	***** Skipping study_200. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_201
+	***** Skipping study_201. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_205
+	***** Skipping study_205. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_210
+	***** Skipping study_210. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_225
+	***** Skipping study_225. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_250
+	***** Skipping study_250. It is not in the run dir list ****
+	==========================================================
+
+Now processing study_300
+	hdf5_file_max_epoch:
+	../harnesses/chicoma_lsc_loderunner-ch-subsampling/runs/study_300/study300_modelState_epoch0120.hdf5
+Starting subprocess for 300 with args ['python3', 'lsc_loderunner_anime.py', '--checkpoint', '../harnesses/chicoma_lsc_loderunner-ch-subsampling/runs/study_300/study300_modelState_epoch0120.hdf5', '--indir', '/lustre/scratch5/exempt/artimis/data/lsc240420/', '--outdir', '../harnesses/chicoma_lsc_loderunner-ch-subsampling/runs/GIF/study_300/epoch120/timestep', '--runID', '4208', '--embed_dim', '96', '--mode', 'timestep', '--verbose']
+	Completed processing study_300
+
+	==========================================================
+===================TIME STARTED===================
+Fri 08 Aug 2025 12:46:10 AM MDT
+===================TIME FINISHED===================
+Fri 08 Aug 2025 01:26:22 AM MDT

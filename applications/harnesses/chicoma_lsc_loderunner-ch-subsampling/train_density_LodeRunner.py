@@ -21,7 +21,7 @@ import numpy as np
 
 from yoke.models.vit.swin.bomberman import LodeRunner
 from yoke.datasets.lsc_dataset import LSC_rho2rho_temporal_DataSet
-from yoke.utils.training.epoch import train_LRsched_loderunner_epoch
+from yoke.utils.training.epoch.loderunner import train_LRsched_loderunner_epoch
 from yoke.utils.dataload import make_dataloader
 from yoke.utils.restart import continuation_setup
 from yoke.utils.parameters import count_torch_params
@@ -58,6 +58,7 @@ parser.set_defaults(
     validation_filelist="lsc240420_prefixes_validation_10pct.txt",
     test_filelist="lsc240420_prefixes_test_10pct.txt",
 )
+parser.add_argument("--max_time_offset")
 
 ############################################
 # Select n channles randomly for an epoch
@@ -106,6 +107,9 @@ if __name__ == "__main__":
     min_fraction = args.min_fraction
     terminal_steps = args.terminal_steps
     warmup_steps = args.warmup_steps
+    # max_time_offset = args.max_time_offset
+    min_time_offset = args.max_time_offset
+    print(f'The min time offset is: {min_time_offset}')
 
     # Number of workers controls how batches of data are prefetched and,
     # possibly, pre-loaded onto GPUs. If the number of workers is large they
@@ -259,7 +263,7 @@ if __name__ == "__main__":
     # Change hydrofields to array to enable slicing with channel map
     hydro_fields = np.array(hydro_fields)
     for epochIDX in range(starting_epoch, ending_epoch):
-        # Randomly select 'channel_map_size' number of channels from for the epoch
+        # Randomly select 'channel_xmap_size' number of channels from for the epoch
         channel_map = rand_channel_map(max_channels, channel_map_size, SEED)
 
         # Blank spaces in the log strings are for next line alignment
@@ -278,7 +282,8 @@ if __name__ == "__main__":
         train_dataset = LSC_rho2rho_temporal_DataSet(
             args.LSC_NPZ_DIR,
             file_prefix_list=train_filelist,
-            max_timeIDX_offset=2,  # This could be a variable.
+            max_timeIDX_offset=100,  # This could be a variable.
+            min_timeIDX_offset=min_time_offset,
             max_file_checks=10,
             half_image=True,
             hydro_fields=hydro_fields[channel_map],
@@ -286,7 +291,8 @@ if __name__ == "__main__":
         val_dataset = LSC_rho2rho_temporal_DataSet(
             args.LSC_NPZ_DIR,
             file_prefix_list=validation_filelist,
-            max_timeIDX_offset=2,  # This could be a variable.
+            max_timeIDX_offset=100,  # This could be a variable.
+            min_timeIDX_offset=min_time_offset,
             max_file_checks=10,
             half_image=True,
             hydro_fields=hydro_fields[channel_map],
@@ -294,7 +300,8 @@ if __name__ == "__main__":
         test_dataset = LSC_rho2rho_temporal_DataSet(
             args.LSC_NPZ_DIR,
             file_prefix_list=test_filelist,
-            max_timeIDX_offset=2,  # This could be a variable.
+            max_timeIDX_offset=100,  # This could be a variable.
+            min_timeIDX_offset=min_time_offset,
             max_file_checks=10,
             half_image=True,
             hydro_fields=hydro_fields[channel_map],
@@ -370,6 +377,9 @@ if __name__ == "__main__":
     #############################################
     # Continue if Necessary
     #############################################
+    # imgen_frmt = "imggen_{0:03d}.slurm"
+    # imgen_name = imgen_frmt.format(studyIDX)
+    # os.system(f"cd ../../../../evaluation; sbatch {imgen_name}")
     FINISHED_TRAINING = epochIDX + 1 > total_epochs
     if not FINISHED_TRAINING:
         new_slurm_file = continuation_setup(

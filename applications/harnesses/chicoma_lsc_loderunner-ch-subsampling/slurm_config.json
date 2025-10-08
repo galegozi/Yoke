@@ -2,9 +2,9 @@
     "system": "chicoma",
     "generated-params": {
         "run-config": "debug",
-        "email": []
+        "email": ["galgal@lanl.gov"]
     },
     "custom-params": {
-        "job-name": "lr_subsamp_std<studyIDX>_ep<epochIDX>"
+        "job-name": "exp<studyIDX>_ep<epochIDX>"
     }
 }

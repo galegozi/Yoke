@@ -127,10 +127,12 @@ for k, study in enumerate(studylist):
             START_slurm_data = strings.replace_keys(study, slurm_tmpl_data).replace(
                 "<epochIDX>", "0001"
             )
+            START_slurm_data = strings.replace_keys(study, START_slurm_data).replace(
+                "<EPOCH>", "START"
+            )
 
         else:
             START_slurm_data = strings.replace_keys(study, START_slurm_data)
-
         START_slurm_name = "study{:03d}_START.slurm".format(study["studyIDX"])
         START_slurm_filepath = os.path.join(studydirname, START_slurm_name)
 

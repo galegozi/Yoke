@@ -1,0 +1,14 @@
+--basedir
+/usr/projects/artimis/mpmm/galgal/Yoke/applications/harnesses/chicoma_lsc_loderunner-ch-subsampling/runs
+--IDX
+002
+--Nsamps_per_trn_pt
+200
+--Nsamps_per_val_pt
+100
+--ylim
+0.002
+--savedir
+./ch_ddp_lrstudy1/
+--savefig
+--inprogress

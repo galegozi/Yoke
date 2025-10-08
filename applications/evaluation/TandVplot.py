@@ -65,7 +65,7 @@ parser.add_argument(
     "-Nt",
     action="store",
     type=int,
-    default=2012,
+    default=200,
     help="Number of samples per training loss plot point.",
 )
 
@@ -74,7 +74,7 @@ parser.add_argument(
     "-Nv",
     action="store",
     type=int,
-    default=250,
+    default=100,
     help="Number of samples per validation loss plot point.",
 )
 
@@ -154,6 +154,7 @@ vIDX = 0
 startIDX = 0
 for tIDX, Tcsv in enumerate(trn_csv_list):
     ptIDX_list = []
+    # print(f'loading {Tcsv}')
     trn_DF = pd.read_csv(
         Tcsv, sep=", ", header=None, names=["Epoch", "Batch", "Loss"], engine="python"
     )
@@ -222,6 +223,8 @@ ax.set_ylim(0.0, YLIM)
 # Set axis labels
 ax.set_ylabel("Loss", fontsize=16)
 ax.set_xlabel("Evaluation Index", fontsize=16)
+
+plt.title(f"Study {IDX}")
 
 # Save or plot images
 if SAVEFIG:

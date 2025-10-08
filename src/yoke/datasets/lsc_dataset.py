@@ -648,6 +648,7 @@ class LSC_rho2rho_temporal_DataSet(Dataset):
         file_prefix_list: str,
         max_timeIDX_offset: int,
         max_file_checks: int,
+        min_timeIDX_offset: int,
         half_image: bool = True,
         hydro_fields: np.array = np.array(
             [
@@ -705,6 +706,13 @@ class LSC_rho2rho_temporal_DataSet(Dataset):
         self.max_timeIDX_offset = max_timeIDX_offset
         self.max_file_checks = max_file_checks
         self.half_image = half_image
+        self.min_timeIDX_offset = min_timeIDX_offset
+
+        # if min_time_offset is None:
+        #     print(f'Using default min time offset = max time offset of {max_timeIDX_offset}')
+        #     self.min_timeIDX_offset = max_timeIDX_offset
+        
+        print(f'Using min time offset = {self.min_timeIDX_offset} and max time offset = {self.max_timeIDX_offset}')
 
         # Create filelist
         with open(file_prefix_list) as f:
@@ -744,7 +752,7 @@ class LSC_rho2rho_temporal_DataSet(Dataset):
                 #
                 # Choose random starting index 0-(100-max_timeIDX_offset) so
                 # the end index will be less than or equal to 99.
-                seqLen = self.rng.integers(0, self.max_timeIDX_offset, endpoint=True)
+                seqLen = self.rng.integers(self.min_timeIDX_offset, self.max_timeIDX_offset, endpoint=True)
                 startIDX = self.rng.integers(0, 100 - seqLen, endpoint=True)
                 endIDX = startIDX + seqLen
 
