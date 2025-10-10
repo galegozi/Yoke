@@ -10,11 +10,11 @@
 # The following are one set of SBATCH options for the Venado GPU
 # partition. There are optional other constraints.
 
-#SBATCH --job-name=ddp_s<studyIDX>_e<epochIDX>
+#SBATCH --job-name=inverse_s<studyIDX>_e0001
 #SBATCH --account=w25_artimis_g
 #PRODUCTION  #SBATCH --partition=gpu
-#PRODUCTION  #SBATCH --time=16:00:00
-#SBATCH --time=1:00:00
+#PRODUCTION  #SBATCH --time=02:00:00
+#SBATCH --time=0:45:00
 #SBATCH --qos=debug
 #SBATCH --reservation=gpu_debug
 #SBATCH --partition=gpu_debug
@@ -22,8 +22,8 @@
 #SBATCH --ntasks-per-node=<NGPUS>
 #SBATCH --gpus-per-node=<NGPUS>
 #SBATCH --cpus-per-task=16
-#SBATCH --output=study<studyIDX>_epoch<epochIDX>.out
-#SBATCH --error=study<studyIDX>_epoch<epochIDX>.err
+#SBATCH --output=study<studyIDX>_epoch0001.out
+#SBATCH --error=study<studyIDX>_epoch0001.err
 #SBATCH -vvv
 
 
@@ -45,19 +45,21 @@ export NCCL_SOCKET_IFNAME=hsn0  # Check possible interfaces with `ip link show`
 # export NCCL_DEBUG_SUBSYS=INIT
 
 # Load correct conda environment
-module load python/3.11-anaconda-2023.07
-source activate
-conda activate <YOKE_TORCH_ENV>
+module load cray-python
+source $HOME/yoke_250724/bin/activate
 
 # Set number of threads per GPU
 export OMP_NUM_THREADS=10
+
+# MKL problems
+export MKL_SERVICE_FORCE_INTEL=1
 
 # Get start time
 export date00=`date`
 
 # Start the Code
 # Explicitly set TCP environment for the following...
-srun python -u <train_script> @<INPUTFILE>
+srun python -u <train_script> @study<studyIDX>_START.input
 
 # Get end time and print to stdout
 export date01=`date`
